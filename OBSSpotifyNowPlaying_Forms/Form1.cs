@@ -56,13 +56,10 @@ namespace OBSSpotifyNowPlaying_Forms {
 				outputText("Couldn't connect to Spotify.");
 			}
 
-			spotify.ListenForEvents = true;
-			spotify.OnTrackChange += trackChanged;
-			spotify.OnPlayStateChange += playStateChanged;
-
+			
 			clearText();
 
-			/*StatusResponse sr = spotify.GetStatus();
+			StatusResponse sr = spotify.GetStatus();
 			if(sr.Playing == true) {
 				Track tr = sr.Track;
 				string trackName = tr.TrackResource.Name;
@@ -77,7 +74,11 @@ namespace OBSSpotifyNowPlaying_Forms {
 				outputText("No Track");
 				outputText("N/A");
 				writeFile("No Track \n N/A");
-			}*/
+			}
+
+			spotify.ListenForEvents = true;
+			spotify.OnTrackChange += trackChanged;
+			spotify.OnPlayStateChange += playStateChanged;
 
 		}
 
